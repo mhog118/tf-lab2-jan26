@@ -1,13 +1,15 @@
 pipeline {
   agent any
+ 
+  triggers {
+    pollSCM('H/3 * * * *')
+  }
+ 
   stages {
     stage('pre-requiste') {
       steps {
         sh '''
-        ls -l
-        pwd
         terraform -version
-        git version
         aws sts get-caller-identity
         '''
       }
@@ -27,10 +29,7 @@ pipeline {
         sh "terraform plan"
       }
     }
-  }
-}
-
-stage('Approval') {
+    stage('Approval') {
       steps {
      
           input message: 'Approve Terraform Apply?'
@@ -38,6 +37,8 @@ stage('Approval') {
     }
     stage('terraform apply') {
       steps {
-        sh "terraform apply"
+        sh "terraform apply --auto-approve"
       }
     }
+  }
+}
