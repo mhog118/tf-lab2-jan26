@@ -1,0 +1,58 @@
+Unknown user has temporarily joined the chat.
+
+ 
+sridevi veludandi (Unverified) has temporarily joined the chat.
+
+ 
+Hi All 
+ 
+day3 is pushed 
+ 
+Pallavi Kondapalli (Unverified) has temporarily joined the chat.
+
+ 
+thanks vishwa
+ 
+ls -l 
+
+pwd
+
+terraform -version
+
+git version
+
+aws sts get-caller-identity
+ 
+"NEW" job or write over existing?
+ 
+pipeline {
+
+  agent any
+
+  stages {
+
+    stage('pre-requiste') {
+
+      steps {
+
+        sh '''
+
+        ls -l 
+
+        pwd
+
+        terraform -version
+
+        git version
+
+        aws sts get-caller-identity
+
+        '''
+
+      }
+
+    }
+
+  }
+
+}
